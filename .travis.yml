@@ -90,7 +90,6 @@ jobs:
 
 stages:
   - "test js"
-  - name: "build test for example"
-    if: branch = master
+  - "build test for example"
   - name: "build test for new project"
     if: branch = release
