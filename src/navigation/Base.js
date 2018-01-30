@@ -32,4 +32,8 @@ export default class Base extends Component<any> {
   start() {
     this.sendCommand('start')
   }
+
+  stop() {
+    this.sendCommand('stop')
+  }
 }
