@@ -17,11 +17,7 @@ RCT_EXPORT_VIEW_PROPERTY(onCalculateRouteSuccess, RCTBubblingEventBlock)       \
 RCT_EXPORT_VIEW_PROPERTY(onCalculateRouteFailure, RCTBubblingEventBlock)       \
 RCT_EXPORT_METHOD(start:(nonnull NSNumber *)reactTag) {                        \
     [_navigationManager startGPSNavi];                                         \
-} 
-
-RCT_EXPORT_METHOD(stop:(nonnull NSNumber *)reactTag) {                        \
-    [_navigationManager stopGPSNavi];                                         \
-}                                                                              \
+}
 
 #define NAVIGATION_VIEW(type)                                                  \
 + (type *)navigationView {                                                     \
