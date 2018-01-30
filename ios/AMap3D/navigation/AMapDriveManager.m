@@ -2,6 +2,7 @@
 #import <AMapNaviKit/AMapNaviDriveManager.h>
 #import "AMapNavigationManager.h"
 #import "AMapDrive.h"
+#import "SpeechSynthesizer.h"
 
 @interface AMapDriveManager : RCTViewManager <AMapNaviDriveManagerDelegate>
 + (AMapDrive *)navigationView;
@@ -39,6 +40,14 @@ RCT_EXPORT_METHOD(calculateRoute:(nonnull NSNumber *)reactTag
                 @"code": @(error.code),
         });
     }
+}
+
+- (void)driveManager:(AMapNaviDriveManager *)driveManager playNaviSoundString:(NSString *)soundString soundStringType:(AMapNaviSoundType)soundStringType
+{
+    
+    NSLog(@"playNaviSoundString:{%ld:%@}", (long)soundStringType, soundString);
+
+    [[SpeechSynthesizer sharedSpeechSynthesizer] speakString:soundString];
 }
 
 @end
