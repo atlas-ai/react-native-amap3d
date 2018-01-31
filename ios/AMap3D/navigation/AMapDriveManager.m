@@ -28,6 +28,11 @@ RCT_EXPORT_METHOD(calculateRoute:(nonnull NSNumber *)reactTag
                                            drivingStrategy:AMapNaviDrivingStrategySingleDefault];
 }
 
+RCT_EXPORT_METHOD(stop:(nonnull NSNumber *)reactTag) {                        \
+    [_navigationManager stopNavi];
+    [[SpeechSynthesizer sharedSpeechSynthesizer] stopSpeak];                                         \
+}
+
 - (void)driveManagerOnCalculateRouteSuccess:(AMapNaviDriveManager *)driveManager {
     if (_navigationView.onCalculateRouteSuccess) {
         _navigationView.onCalculateRouteSuccess(nil);
