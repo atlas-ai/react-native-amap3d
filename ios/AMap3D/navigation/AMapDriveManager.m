@@ -36,6 +36,7 @@ RCT_EXPORT_METHOD(stop:(nonnull NSNumber *)reactTag) {                        \
 - (void)driveManagerOnCalculateRouteSuccess:(AMapNaviDriveManager *)driveManager {
     if (_navigationView.onCalculateRouteSuccess) {
         _navigationView.onCalculateRouteSuccess(nil);
+        _navigationView.trackingMode = AMapNaviViewTrackingModeCarNorth;
     }
 }
 
