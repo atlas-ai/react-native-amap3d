@@ -40,10 +40,6 @@ RCT_EXPORT_METHOD(stop:(nonnull NSNumber *)reactTag) {                        \
     if (_navigationView.onCalculateRouteSuccess) {
         _navigationView.onCalculateRouteSuccess(nil);
         _navigationView.trackingMode = AMapNaviViewTrackingModeCarNorth;
-        //将导航界面的界面元素进行隐藏，然后通过自定义的控件展示导航信息
-        [_navigationView setShowUIElements:NO];
-        //关闭路况显示，以展示自定义Polyline的样式
-        [_navigationView setShowTrafficLayer:NO];
         
     }
 }
@@ -64,20 +60,5 @@ RCT_EXPORT_METHOD(stop:(nonnull NSNumber *)reactTag) {                        \
     [[SpeechSynthesizer sharedSpeechSynthesizer] speakString:soundString];
 }
 
-- (AMapNaviRoutePolylineOption *)_navigationView:(AMapNaviDriveView *)_navigationView needUpdatePolylineOptionForRoute:(AMapNaviRoute *)naviRoute
-{
-    NSLog(@"ChangePolyLine");
-    //自定义普通路线Polyline的样式
-    AMapNaviRoutePolylineOption *polylineOption = [[AMapNaviRoutePolylineOption alloc] init];
-    polylineOption.lineWidth = 8;
-    polylineOption.drawStyleIndexes = [NSArray arrayWithArray:naviRoute.wayPointCoordIndexes];
-    polylineOption.replaceTrafficPolyline = YES;
-    
-    //可以使用颜色填充,也可以使用纹理图片(当同时设置时,strokeColors设置将被忽略)
-    polylineOption.strokeColors = @[[UIColor purpleColor], [UIColor brownColor], [UIColor orangeColor]];
-    //polylineOption.textureImages = @[[UIImage imageNamed:@"arrowTexture2"], [UIImage imageNamed:@"arrowTexture3"], [UIImage imageNamed:@"arrowTexture4"]];
-    
-    return polylineOption;
-}
 
 @end
